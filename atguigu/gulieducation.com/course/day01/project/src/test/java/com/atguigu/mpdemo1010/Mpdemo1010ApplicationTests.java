@@ -28,9 +28,9 @@ public class Mpdemo1010ApplicationTests {
 
     //添加操作
     @Test
-    public void addUser() {
+    public User addUser() {
         User user = new User();
-        user.setName("岳不群1");
+        user.setName("optimize");
         user.setAge(70);
         user.setEmail("lucy@qq.com");
 
@@ -39,6 +39,8 @@ public class Mpdemo1010ApplicationTests {
 
         int insert = userMapper.insert(user);
         System.out.println("insert:"+insert);
+        System.out.println("user:"+user);
+        return user;
     }
 
     //修改操作
@@ -46,8 +48,10 @@ public class Mpdemo1010ApplicationTests {
     public void updateUser() {
 
         User user = new User();
-        user.setId(1231103936770154497L);
+        user.setId(1346753879441186818L);
         user.setAge(120);
+        user.setName("auto2");
+        user.setCreateTime(new Date());
 
         int row = userMapper.updateById(user);
         System.out.println(row);
@@ -57,7 +61,8 @@ public class Mpdemo1010ApplicationTests {
     @Test
     public void testOptimisticLocker() {
         //根据id查询数据
-        User user = userMapper.selectById(1231115382920916994L);
+        User user = userMapper.selectById(1346761415716356097L);
+//        User user = userMapper.selectById(addUser().getId());
         //进行修改
         user.setAge(200);
         userMapper.updateById(user);
